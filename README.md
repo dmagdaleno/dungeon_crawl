@@ -1,6 +1,6 @@
 # DungeonCrawl
 
-**TODO: Add description**
+Project from the book: Learn Functional Programming with Elixir by Ulisses Almeida
 
 ## Installation
 
