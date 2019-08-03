@@ -36,7 +36,8 @@ defmodule DungeonCrawl.CLI.Main do
     Shell.info(DungeonCrawl.Character.current_stats(character))
 
     rooms
-    |> Enum.random
+    |> weighted_rooms
+    |> random_room
     |> DungeonCrawl.CLI.RoomActionsChoice.start
     |> trigger_action(character)
     |> handle_action_result
@@ -52,4 +53,13 @@ defmodule DungeonCrawl.CLI.Main do
   
   defp handle_action_result({character, _}),
     do: crawl(character, DungeonCrawl.Room.all())
+
+  defp weighted_rooms(rooms) do
+    give_weight = fn room -> %{:value => room, :weight => room.probability} end
+    Enum.map(rooms, give_weight)
+  end
+
+  defp random_room(weighted_rooms) do
+    WeightedRandom.complex(weighted_rooms)
+  end
 end
