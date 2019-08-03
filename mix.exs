@@ -23,7 +23,8 @@ defmodule DungeonCrawl.MixProject do
   defp deps do
     [
       {:dialyxir, "~> 0.5", only: [:dev], runtime: false},
-      {:weighted_random, "~> 0.1.0"}
+      {:weighted_random, "~> 0.1.0"},
+      {:monadex, "~> 1.1"}
     ]
   end
 end
