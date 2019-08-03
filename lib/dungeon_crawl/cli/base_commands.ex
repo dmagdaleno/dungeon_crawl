@@ -12,11 +12,6 @@ defmodule DungeonCrawl.CLI.BaseCommands do
     options = Enum.join(1..Enum.count(options),", ")
     "Which one? [#{options}]\n"
   end
-  
-  def parse_answer(answer) do
-    {option, _} = Integer.parse(answer)
-    option - 1
-  end
 
   def ask_for_index(options) do
     answer =
